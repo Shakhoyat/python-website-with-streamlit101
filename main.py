@@ -16,8 +16,6 @@ if uploaded_file is not None:
     st.write(df.describe())
     
     st.subheader("Filter Data ")
-    column_to_filter = st.selectbox("Select column to filter", df.columns)
-    filter_value = st.text_input("Enter value to filter")
-    filtered_data = df[df[column_to_filter] == filter_value]
-    st.write("Filtered Data:")
-    st.write(filtered_data)
+    columns=df.columns.tolist()
+    column_to_filter = st.selectbox("Select column to filter by",columns)
+    
