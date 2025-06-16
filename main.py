@@ -30,20 +30,15 @@ if uploaded_file is not None:
     y_column = st.selectbox("Select Y-axis column", columns)
     
     plot_type = st.selectbox("Select plot type", ["Line", "Bar", "Histogram", "Scatter"])
+    plt.figure(figsize=(10, 5))
     if plot_type == "Line":
-        st.line_chart(filtered_df.set_index(x_column)[y_column])
+        plt.plot(filtered_df[x_column], filtered_df[y_column])
     elif plot_type == "Bar":
-        st.bar_chart(filtered_df.set_index(x_column)[y_column])
+        plt.bar(filtered_df[x_column], filtered_df[y_column])
     elif plot_type == "Histogram":
-        st.write("Histogram of selected column:")
-        column_to_plot = st.selectbox("Select column to plot", columns)
-        plt.hist(filtered_df[column_to_plot], bins=20)
-        st.pyplot(plt)
+        plt.hist(filtered_df[y_column], bins=20)
     elif plot_type == "Scatter":
-        st.write("Scatter plot of selected columns:")
         plt.scatter(filtered_df[x_column], filtered_df[y_column])
-        plt.xlabel(x_column)
-        plt.ylabel(y_column)
-        st.pyplot(plt)
+    st.pyplot(plt)
 else:
     st.write("Please upload a CSV file to start.")
