@@ -30,23 +30,25 @@ if uploaded_file is not None:
     y_column = st.selectbox("Select Y-axis column", columns)
     
     plot_type = st.selectbox("Select plot type", ["Line", "Bar", "Histogram", "Scatter"])
-    plt.figure(figsize=(10, 5))
-    if plot_type == "Line":
-       st.line_chart(filtered_df.set_index(x_column)[y_column])
-    elif plot_type == "Bar":
-       st.bar_chart(filtered_df.set_index(x_column)[y_column])
-    elif plot_type == "Histogram":
-       column_to_plot = st.selectbox("Select column to plot", columns)
-       plt.figure()
-       plt.hist(filtered_df[column_to_plot].dropna(), bins=20)
-       plt.xlabel(column_to_plot)
-       plt.ylabel("Frequency")
-       st.pyplot(plt)
-    elif plot_type == "Scatter":
-       plt.figure()
-       plt.scatter(filtered_df[x_column], filtered_df[y_column])
-       plt.xlabel(x_column)
-       plt.ylabel(y_column)
-       st.pyplot(plt)
+    
+    if st.button("Generate Plot"):
+        plt.figure(figsize=(10, 5))
+        if plot_type == "Line":
+            st.line_chart(filtered_df.set_index(x_column)[y_column])
+        elif plot_type == "Bar":
+            st.bar_chart(filtered_df.set_index(x_column)[y_column])
+        elif plot_type == "Histogram":
+            column_to_plot = st.selectbox("Select column to plot", columns)
+            plt.figure()
+            plt.hist(filtered_df[column_to_plot].dropna(), bins=20)
+            plt.xlabel(column_to_plot)
+            plt.ylabel("Frequency")
+            st.pyplot(plt)
+        elif plot_type == "Scatter":
+            plt.figure()
+            plt.scatter(filtered_df[x_column], filtered_df[y_column])
+            plt.xlabel(x_column)
+            plt.ylabel(y_column)
+            st.pyplot(plt)
 else:
     st.write("Please upload a CSV file to start.")
