@@ -26,3 +26,15 @@ if uploaded_file is not None:
     filtered_df = df[df[column_to_filter] == selected_value]
     st.write("Filtered Data:")
     st.write(filtered_df)
+    
+    st.subheader("Visualize Data")
+    plot_type = st.selectbox("Select plot type", ["Line", "Bar", "Histogram"])
+    if plot_type == "Line":
+        st.line_chart(filtered_df)
+    elif plot_type == "Bar":
+        st.bar_chart(filtered_df)
+    elif plot_type == "Histogram":
+        st.write("Histogram of selected column:")
+        column_to_plot = st.selectbox("Select column to plot", columns)
+        plt.hist(filtered_df[column_to_plot], bins=20)
+        st.pyplot(plt)
