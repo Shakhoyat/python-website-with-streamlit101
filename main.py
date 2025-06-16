@@ -47,3 +47,5 @@ if uploaded_file is not None:
         plt.xlabel(x_column)
         plt.ylabel(y_column)
         st.pyplot(plt)
+else:
+    st.write("Please upload a CSV file to start.")
