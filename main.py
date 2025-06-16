@@ -1,3 +1,4 @@
+import pip
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -65,3 +66,8 @@ if uploaded_file is not None:
                 st.pyplot(fig)
 else:
     st.write("Please upload a CSV file to start.")
+
+# Save the current environment packages to requirements.txt
+with open('requirements.txt', 'w') as f:
+    for package in pip.get_installed_distributions():
+        f.write(f"{package}\n")
