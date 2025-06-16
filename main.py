@@ -32,13 +32,21 @@ if uploaded_file is not None:
     plot_type = st.selectbox("Select plot type", ["Line", "Bar", "Histogram", "Scatter"])
     plt.figure(figsize=(10, 5))
     if plot_type == "Line":
-        plt.plot(filtered_df[x_column], filtered_df[y_column])
+       st.line_chart(filtered_df.set_index(x_column)[y_column])
     elif plot_type == "Bar":
-        plt.bar(filtered_df[x_column], filtered_df[y_column])
+       st.bar_chart(filtered_df.set_index(x_column)[y_column])
     elif plot_type == "Histogram":
-        plt.hist(filtered_df[y_column], bins=20)
+       column_to_plot = st.selectbox("Select column to plot", columns)
+       plt.figure()
+       plt.hist(filtered_df[column_to_plot].dropna(), bins=20)
+       plt.xlabel(column_to_plot)
+       plt.ylabel("Frequency")
+       st.pyplot(plt)
     elif plot_type == "Scatter":
-        plt.scatter(filtered_df[x_column], filtered_df[y_column])
-    st.pyplot(plt)
+       plt.figure()
+       plt.scatter(filtered_df[x_column], filtered_df[y_column])
+       plt.xlabel(x_column)
+       plt.ylabel(y_column)
+       st.pyplot(plt)
 else:
     st.write("Please upload a CSV file to start.")
