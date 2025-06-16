@@ -23,3 +23,6 @@ if uploaded_file is not None:
     unique_values = df[column_to_filter].unique()
     selected_value = st.selectbox("Select value to filter by", unique_values)
     
+    filtered_df = df[df[column_to_filter] == selected_value]
+    st.write("Filtered Data:")
+    st.write(filtered_df)
