@@ -17,9 +17,24 @@ This app lets you upload CSV files, filter data, and visualize it with interacti
 Curious how the app works?  
 Check out this quick demo video to watch data being uploaded, filtered, and visualized in real time:
 
-[![Watch the demo](https://youtu.be/tq1h-iL-Vuo/0.jpg)](https://youtu.be/tq1h-iL-Vuo)
+![Watch the demo](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)
 
-*Experience the magic of interactive data analysis—right in your browser!*
+[![Watch the demo](https://img.youtube.com/vi/tq1h-iL-Vuo/0.jpg)](https://youtu.be/tq1h-iL-Vuo)
+
+## 📸 Screenshots: Explore the App
+
+### 🖼️ Key Features at a Glance
+
+Below are selected screenshots showcasing the core functionalities of the Data Analysis App:
+
+| Interactive Plotting | Line Plot |Bar Plot | Scatter Plot | 
+|:--------------------:|:---------:|:------------:|:--------:|
+| ![Interactive Plotting](screenshots/3.png.png) | ![Line Plot](screenshots/4.png.png) | ![Scatter Plot](screenshots/5.png.png) | ![Bar Plot](screenshots/7.png.png) 
+
+*Effortlessly upload your datasets, apply filters, and generate insightful visualizations—all within a streamlined interface.*
+
+For more examples and a closer look at the app’s capabilities, browse the `screenshots` directory. Discover a variety of chart types and explore the full range of features available.
+
 ## 🛠️ Getting Started
 
 1. **Clone this repo:**
