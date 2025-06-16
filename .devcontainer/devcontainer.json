@@ -29,5 +29,6 @@
   },
   "forwardPorts": [
     8501
-  ]
+  ],
+  "onCreateCommand": "pip freeze > requirements.txt"
 }
