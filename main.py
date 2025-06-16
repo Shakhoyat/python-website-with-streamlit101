@@ -28,13 +28,22 @@ if uploaded_file is not None:
     st.write(filtered_df)
     
     st.subheader("Visualize Data")
-    plot_type = st.selectbox("Select plot type", ["Line", "Bar", "Histogram"])
+    x_column = st.selectbox("Select X-axis column", columns)
+    y_column = st.selectbox("Select Y-axis column", columns)
+    
+    plot_type = st.selectbox("Select plot type", ["Line", "Bar", "Histogram", "Scatter"])
     if plot_type == "Line":
-        st.line_chart(filtered_df)
+        st.line_chart(filtered_df.set_index(x_column)[y_column])
     elif plot_type == "Bar":
-        st.bar_chart(filtered_df)
+        st.bar_chart(filtered_df.set_index(x_column)[y_column])
     elif plot_type == "Histogram":
         st.write("Histogram of selected column:")
         column_to_plot = st.selectbox("Select column to plot", columns)
         plt.hist(filtered_df[column_to_plot], bins=20)
+        st.pyplot(plt)
+    elif plot_type == "Scatter":
+        st.write("Scatter plot of selected columns:")
+        plt.scatter(filtered_df[x_column], filtered_df[y_column])
+        plt.xlabel(x_column)
+        plt.ylabel(y_column)
         st.pyplot(plt)
