@@ -1,4 +1,4 @@
-import pip
+import pkg_resources
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -69,5 +69,6 @@ else:
 
 # Save the current environment packages to requirements.txt
 with open('requirements.txt', 'w') as f:
-    for package in pip.get_installed_distributions():
-        f.write(f"{package}\n")
+ for package in pkg_resources.working_set:
+    print(f"{package.project_name}=={package.version}")
+    f.write(f"{package}\n")
