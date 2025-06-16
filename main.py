@@ -1,3 +1,5 @@
+from enum import unique
+import select
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -18,4 +20,6 @@ if uploaded_file is not None:
     st.subheader("Filter Data ")
     columns=df.columns.tolist()
     column_to_filter = st.selectbox("Select column to filter by",columns)
+    unique_values = df[column_to_filter].unique()
+    selected_value = st.selectbox("Select value to filter by", unique_values)
     
